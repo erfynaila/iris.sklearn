@@ -4,10 +4,10 @@ import numpy as np
 import pickle
 
 parser = argparse.ArgumentParser(description='Prediction of Iris')
-parser.add_argument('sepal_length', type=float, help='sepal length of Iris')
-parser.add_argument('sepal_width', type=float, help='sepal width of iris')
-parser.add_argument('petal_length', type=float, help='petal length of iris')
-parser.add_argument('petal_width', type=float, help='petal width of iris')
+parser.add_argument('--sepal_length', type=float, help='sepal length of Iris')
+parser.add_argument('--sepal_width', type=float, help='sepal width of iris')
+parser.add_argument('--petal_length', type=float, help='petal length of iris')
+parser.add_argument('--petal_width', type=float, help='petal width of iris')
 args = parser.parse_args()
 
 
