@@ -1,7 +1,6 @@
 import argparse
 import pandas as pd
 import numpy as np
-import pickle
 
 parser = argparse.ArgumentParser(description='Prediction of Iris')
 parser.add_argument('--sepal_length', type=float, help='sepal length of Iris')
@@ -22,3 +21,4 @@ if __name__ == '__main__':
     out = predict_iris(args.sepal_length, args.sepal_width,
                        args.petal_length, args.petal_width)
     print(label[out])
+    # print(f'Predict Detection is: {label[out]}')
