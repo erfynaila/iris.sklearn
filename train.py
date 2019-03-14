@@ -8,6 +8,10 @@ import pickle
 import datetime
 from sklearn.model_selection import cross_val_predict
 from sklearn import tree
+from sklearn.neighbors import KNeighborsClassifier
+import xgboost as xgb
+from sklearn.ensemble import RandomForestClassifier
+
 
 
 """ command-line parsing in the Python standard library """
@@ -15,10 +19,11 @@ parser = argparse.ArgumentParser(description="Training Iris")
 parser.add_argument('--path', type=str, help='load file with format csv')
 parser.add_argument('--feature_column', type=str, help='feature from iris dataset')
 parser.add_argument('--target_column', type=str, help='target from iris dataset')
-parser.add_argument('--train_size', default=0.9, type=float, help='give train size')
-parser.add_argument('--random_state', default=0, type=int, help='give random state')
+parser.add_argument('--train_size', default=0.6, type=float, help='give train size')
+parser.add_argument('--random_state', default=90, type=int, help='give random state')
 parser.add_argument('--algorithm', type=str, help='you can choose algorithm that you want to use')
 parser.add_argument('--save_to', default=None, help='you file will save in folder weight')
+parser.add_argument('--verbose', default=False, help='verbose not active')
 args = parser.parse_args()
 
 
@@ -30,6 +35,14 @@ X = df.loc[:, col]
 
 
 """ change the sample targets to number and determine targets column for training """
+# def species_to_num():
+#     change = {'Iris-setosa': 0,
+#                   'Iris-versicolor': 1,
+#                   'Iris-virginica': 2}
+#     df['tmp'] = df[args.target_column].map(change)
+#     y = df['tmp']
+#     return y
+
 species_to_num = {'Iris-setosa': 0,
                   'Iris-versicolor': 1,
                   'Iris-virginica': 2}
@@ -49,10 +62,19 @@ X_std_train = sc_x.fit_transform(X_train)
 
 """ choose algorithm that will use for training """
 if args.algorithm == 'svm':
-    clf = svm.SVC(kernel='linear', C=1.0 )
+    clf = svm.SVC(kernel='linear', C=1.0, verbose=args.verbose)
     clf.fit(X_std_train, y_train)
 elif args.algorithm == 'tree':
     clf = tree.DecisionTreeClassifier()
+    clf.fit(X_std_train, y_train)
+elif args.algorithm == 'knn':
+    clf = KNeighborsClassifier(n_neighbors=7, p=2, metric='minkowski')
+    clf.fit(X_std_train, y_train)
+elif args.algorithm == 'xgboots':
+    clf = xgb.XGBClassifier()
+    clf.fit(X_std_train, y_train)
+elif args.algorithm == 'rf':
+    clf = RandomForestClassifier()
     clf.fit(X_std_train, y_train)
 
 
@@ -63,6 +85,10 @@ conf_mat = confusion_matrix(y_train, y_train_pred_svm)
 """ to see the accuration score training """
 score = clf.score(X_std_train, y_train)
 
+""" print the confusion_matrix and the score """
+print(conf_mat)
+print(f'Accuracy Detection: {score}')
+
 
 """ save to file in the current working directory with datetime for code of file """
 if args.save_to == None:
@@ -70,6 +96,7 @@ if args.save_to == None:
     pkl_filename = "weight/test.sklearn_" + dstr + ".pkl"
     with open(pkl_filename, 'wb') as file:
         pickle.dump(clf, file)
+# """ or save to another directory that will we choose """
 else:
     pkl_filename = args.save_to
     with open(pkl_filename, 'wb') as file:
