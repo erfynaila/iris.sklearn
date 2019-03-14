@@ -48,12 +48,12 @@ $ python train.py --path=dataset/iris.data
 4             5.0          3.6           1.4          0.2     Iris-setosa
 
 ```
-Running the script with call the argumen of --path and choose directory the place of file iris.data saved.
+Running the script with call the argument of --path and choose directory the place of file iris.data saved.
 ```html
 $ python train.py --path=dataset/iris.data --feature_column=sepal_width,sepal_length,petal_width,petal_length 
  sepal_width  sepal_length  petal_width  petal_length
 ```
-
+Running the script with call argument of --path and --feature_column, --feature_column is the argument for choose the features that will use for training, --feature_column contains are sepal_length, sepal_width, petal_length, petal_width.
 ```html
 $ python train.py --path=dataset/iris.data --feature_column=sepal_width,sepal_length,petal_width,petal_length --target_column=species 
 0      0
@@ -62,7 +62,7 @@ $ python train.py --path=dataset/iris.data --feature_column=sepal_width,sepal_le
 3      0
 4      0
 ```
-
+Running the script with call argument of --path, --feature_column and --target_column, --target_column is the argument for choose the target that will use for training, --target_column contains is species.
 ```html
 $ python train.py --path=dataset/iris.data --feature_column=sepal_width,sepal_length,petal_width,petal_length --target_column=species --algorithm=svm 
 [[47  0  0]
@@ -70,21 +70,15 @@ $ python train.py --path=dataset/iris.data --feature_column=sepal_width,sepal_le
  [ 0  2 44]]
 Accuracy Detection: 0.9703703703703703
 ```
-
+Runing the script with call argument  of --path, --feature_column, --target_column, and --algorithm, --algorithm is the argument contained in it algorithms of svm (Support Vector Machine) and tree (DecisionTree), you can choose algorithm that will you use for training iris, and it will show you the confusion matrix and the score of training from algorithm that you use.  
 ```html
-$ python train.py --path=dataset/iris.data --feature_column=sepal_width,sepal_length,petal_width,petal_length \--target_column=species --algorithm=svm  --algorithm=svm --save_to=weight/desy.pkl
+$ python train.py --path=dataset/iris.data --feature_column=sepal_width,sepal_length,petal_width,petal_length --target_column=species --algorithm=svm  --algorithm=svm --save_to=weight/testiris1.pkl
 ```
-
+Runing the script with call argument of --path, --feature_column, --target_column, --algorithm and --save_to, --save_to for the choose the directory that will use for save the pkl file with a predetermined directory.
 ```html
-$ python train.py --path=dataset/iris.data --feature_column=sepal_width,sepal_length,petal_width,petal_length \--target_column=species --algorithm=svm  --algorithm=svm --save_to=/home/abbiyanaila/Desktop/fandi.pkl
+$ python train.py --path=dataset/iris.data --feature_column=sepal_width,sepal_length,petal_width,petal_length --target_column=species --algorithm=svm  --algorithm=svm --save_to=/home/abbiyanaila/Desktop/testiris2.pkl
 ```
-
-Here is what is happening :
-
-- 
-
-
-
+Runing the script with call argument of --path, --feature_column, --target_column, --algorithm and --save_to, --save_to for the choose the directory that will use for save the pkl file with directory that will you choose.
 ## Data
 
 The dataset used in this project is included as `iris.data` in dataset directory. This dataset is a freely available on the [UCI Machine Learning](https://archive.ics.uci.edu/ml/datasets/iris). This dataset has the following attributes:
