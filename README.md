@@ -70,7 +70,7 @@ $ python train.py --path=dataset/iris.data --feature_column=sepal_width,sepal_le
  [ 0  2 44]]
 Accuracy Detection: 0.9703703703703703
 ```
-Runing the script with call argument  of --path, --feature_column, --target_column, and --algorithm, --algorithm is the argument contained in it algorithms of svm (Support Vector Machine) and tree (DecisionTree), you can choose algorithm that will you use for training iris, and it will show you the confusion matrix and the score of training from algorithm that you use.  
+Runing the script with call argument  of --path, --feature_column, --target_column, and --algorithm, --algorithm is the argument contained in it algorithms of svm (Support Vector Machine), tree (DecisionTree), knn (k-Nearest Neighbors), xgboots (xgboots) and the last is rf (Random forest), you can choose algorithm that will you use for training iris, and it will show you the confusion matrix and the score of training from algorithm that you use.  
 ```html
 $ python train.py --path=dataset/iris.data --feature_column=sepal_width,sepal_length,petal_width,petal_length --target_column=species --algorithm=svm  --algorithm=svm --save_to=weight/testiris1.pkl
 ```
@@ -95,8 +95,14 @@ After the training in Jupyter Notebook done, save the file with pkl file extensi
 
 I basically used 2 types of classifier to predict the outcome of the Iris types.
 
-`SVM` : The accuracy of SVM classifier turned out to be 0.9703703703703703
-.
+`SVM` : The accuracy of SVM classifier turned out to be 0.9703703703703703.
 
 `DecisionTree` : The accuracy of DecisionTree classifier turned out to be 1.0.
+
+`k-Nearest Neighbors` : The accuracy of k-Nearest Neighbors classifier turned out to be 0.9777777777777777.
+
+`xgboost` : The accuracy of xgboost classifier turned out to be 1.0.
+
+`Random forests` : The accuracy of Random forest classifier turned out to be 1.0.
+
 
