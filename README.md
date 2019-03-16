@@ -93,7 +93,7 @@ After the training in Jupyter Notebook done, save the file with pkl file extensi
 
 ## Outcome
 
-I basically used 2 types of classifier to predict the outcome of the Iris types.
+I basically used 5 types of classifier to predict the outcome of the Iris types.
 
 `SVM` : The accuracy of SVM classifier turned out to be 0.9703703703703703.
 
